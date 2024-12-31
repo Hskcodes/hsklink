@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.options import Options
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 import time
+import chromedriver_binary_auto  # Automatically manage chromedriver
 
 # Dictionary to store website bypass methods
 bypass_methods = {
@@ -19,7 +20,7 @@ def setup_selenium():
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
-    service = Service("/usr/local/bin/chromedriver")  # Replace with your ChromeDriver path
+    service = Service()  # Automatically detects the chromedriver with chromedriver-binary-auto
     return webdriver.Chrome(service=service, options=chrome_options)
 
 # Bypass functions
